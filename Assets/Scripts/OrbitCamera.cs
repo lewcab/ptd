@@ -59,11 +59,31 @@ public class OrbitCamera : MonoBehaviour
         if (rotate == null || rotate.action == null)
             throw new InvalidOperationException("OrbitCamera requires a rotate InputActionReference with a valid action.");
 
+        if (!IsVector2Action(rotate.action))
+            throw new InvalidOperationException("OrbitCamera requires rotate to be a Vector2 action.");
+
         if (zoom == null || zoom.action == null)
             throw new InvalidOperationException("OrbitCamera requires a zoom InputActionReference with a valid action.");
 
+        if (!IsVector2Action(zoom.action))
+            throw new InvalidOperationException("OrbitCamera requires zoom to be a Vector2 action.");
+
         if (unlock == null || unlock.action == null)
             throw new InvalidOperationException("OrbitCamera requires an unlock InputActionReference with a valid action.");
+
+        if (!IsButtonAction(unlock.action))
+            throw new InvalidOperationException("OrbitCamera requires unlock to be a Button action.");
+    }
+
+    bool IsVector2Action(InputAction action)
+    {
+        return action.type == InputActionType.Value && action.expectedControlType == "Vector2";
+
+    }
+
+    bool IsButtonAction(InputAction action)
+    {
+        return action.type == InputActionType.Button;
     }
     
     void InitializeOrbitState()

@@ -28,7 +28,7 @@
                     "name": "Zoom",
                     "type": "Value",
                     "id": "332eca62-184f-4c25-90d8-266cb332d624",
-                    "expectedControlType": "Delta",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
