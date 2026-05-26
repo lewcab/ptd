@@ -47,7 +47,7 @@ public class OrbitCamera : MonoBehaviour
         ValidateTarget();
         InitializeOrbitState();
     }
-    
+
     void ValidateTarget()
     {
         if (target == null)
@@ -84,7 +84,7 @@ public class OrbitCamera : MonoBehaviour
     {
         return action.type == InputActionType.Button;
     }
-    
+
     void InitializeOrbitState()
     {
         target_pos = target.position;
@@ -104,12 +104,13 @@ public class OrbitCamera : MonoBehaviour
 
     void Update()
     {
-        if (IsCameraUnlocked()) {
+        if (IsCameraUnlocked())
+        {
             Vector2 rotationInput = GetRotationInput();
             UpdateYaw(rotationInput.x, Time.deltaTime);
             UpdatePitch(rotationInput.y, Time.deltaTime);
         }
-        
+
         UpdateZoom();
         ApplyOrbitTransform();
     }
@@ -136,16 +137,16 @@ public class OrbitCamera : MonoBehaviour
         return rotate.action.ReadValue<Vector2>();
     }
 
-    void UpdateYaw(float x, float dt) {
+    void UpdateYaw(float x, float dt)
+    {
         yaw += x * rotationSpeed * dt;
     }
 
-    void UpdatePitch(float y, float dt) {
+    void UpdatePitch(float y, float dt)
+    {
         pitch -= y * rotationSpeed * dt;
         pitch = Mathf.Clamp(pitch, -89f, 89f);
     }
-
-    
 
     bool IsCameraUnlocked()
     {
