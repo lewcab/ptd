@@ -78,7 +78,6 @@ public class OrbitCamera : MonoBehaviour
     bool IsVector2Action(InputAction action)
     {
         return action.type == InputActionType.Value && action.expectedControlType == "Vector2";
-
     }
 
     bool IsButtonAction(InputAction action)
@@ -119,7 +118,7 @@ public class OrbitCamera : MonoBehaviour
     {
         float zoomInput = zoom.action.ReadValue<Vector2>().y;
         distance -= zoomInput * zoomStep;
-        distance = Mathf.Max(minDistance, distance); // Prevent the camera from getting too close
+        distance = Mathf.Max(minDistance, distance);
     }
 
     void ApplyOrbitTransform()
